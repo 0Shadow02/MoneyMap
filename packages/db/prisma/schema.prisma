@@ -16,4 +16,66 @@ datasource db {
 model User {
   id        String @id @default(uuid())
   email     String @unique
+  UserSettings UserSettings[]
+  Category     Category[]
+  Transaction     Transaction[]
+  MonthHistory     MonthHistory[]
+  YearHistory     YearHistory[]
+}
+model UserSettings {
+  userId    String @id
+  currency  String
+  user      User   @relation(fields: [userId], references: [id])
+  
+ 
+}
+model Category {
+  createdAt DateTime @default(now())
+  name      String
+  userId    String
+  icon      String
+  type      String @default("expense")
+  user      User   @relation(fields: [userId], references: [id])
+
+  @@unique([name, userId , type])
+}
+
+model Transaction {
+  id              String @id @default(uuid())
+  createdAt       DateTime @default(now())
+  updateAt        DateTime @default(now())
+
+  amount          Float
+  description     String
+  date            DateTime
+  userId          String
+  type            String @default("income")
+
+  category        String
+  categoryIcon    String
+   user      User   @relation(fields: [userId], references: [id])
+}
+
+model MonthHistory {
+  userId     String
+  day        Int
+  month      Int
+  year       Int
+  income     Float
+  expense    Float
+user      User   @relation(fields: [userId], references: [id])
+
+  @@id([day,month,year,userId])
+
+}
+model YearHistory {
+  userId     String
+  month      Int
+  year       Int
+  income     Float
+  expense    Float
+  user      User   @relation(fields: [userId], references: [id])
+
+  @@id([month,year,userId])
+
 }

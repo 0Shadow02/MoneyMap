@@ -2,7 +2,7 @@
 import GithubProvider from "next-auth/providers/github"
 import GoogleProvider from "next-auth/providers/google";
 import DiscordProvider from "next-auth/providers/discord";
-import prisma from "@/app/lib/prismadb";
+import prisma from "@/lib/prismadb";
 
 // import CredentialsProvider from 'next-auth/providers/credentials';
 // import bcrypt from "bcrypt"

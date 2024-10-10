@@ -53,9 +53,6 @@ function MobileNavbar(){
             </div>
             <div className="flex items-center gap-2">
                <ThemeSwitcherBtn />
-               {/* <Button onClick={()=>signOut()} variant={"secondary"} >
-                Signout
-               </Button> */}
                <Avatar/>
             </div>
         </nav>
@@ -65,30 +62,31 @@ function MobileNavbar(){
 
 function DesktopNavbar() {
     return (
-        <div className="hidden border-separate border-b bg-background md:block ">
-            <nav className=" container flex items-center justify-between px-8">
-                <div className=" flex h-[80px] min-h-[60px] items-center gap-x-4">
+        <div className="hidden border-separate border-b bg-background md:block lg:block ">
+            <nav className="w-full container flex justify-between items-center px-8 h-[65px] min-h-[60px]">
                 <Logo/>
-                <div className=" flex h-full">
-                   {items.map((item)=> (
-                    <NavbarItem
-                     key={item.label}
-                     link={item.link}
-                     label={item.label}
-                    />
-                   ))}
-                </div>
-
-                </div>
-                   <div className=" flex items-center gap-2">
-                        <ThemeSwitcherBtn />
-                        <Avatar/>
-                   </div>
+               <div className=" flex h-full">
+               {items.map((item)=> (
+                <NavbarItem
+                key={item.label}
+                link={item.link}
+                label={item.label}
+                />
+            ))}
+               </div>
+               <div  className=" flex items-center gap-5" >
+               <ThemeSwitcherBtn />
+                    <Avatar/>
+               <Button  onClick={()=>signOut()} size={"sm"} type="button" variant={"default"} >
+                Signout
+               </Button>
+               </div>
             </nav>
 
         </div>
     )
 }
+
 
 const NavbarItem=({link , label , clickCallback}:{
     link: string;
