@@ -9,17 +9,14 @@ export default function RootProviders({children}:{children:React.ReactNode}){
   
     return (
         <QueryClientProvider client={queryClient}>
-
-    <ThemeProvider 
-             attribute="class"
-             defaultTheme="dark"
-             enableSystem 
-             disableTransitionOnChange
-             
-             >
-        {children}
- 
-    </ThemeProvider>
+            <ThemeProvider 
+                    attribute="class"
+                    defaultTheme="dark"
+                    enableSystem 
+                    disableTransitionOnChange
+                    >
+                {children}
+            </ThemeProvider>
         <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
 )}
