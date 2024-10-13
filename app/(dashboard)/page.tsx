@@ -5,18 +5,23 @@ import { getServerSession } from "next-auth"
 import { redirect } from "next/navigation"
 import { TransactionsCard } from "./_components/TransactionsCard"
 import Overview from "./_components/Overview"
+import History from "./_components/History"
 
 
 export default async function page(){
     const session = await getServerSession(authoptions)
     const user = session?.user
+    !user && redirect("/api/auth/signin")
 
     const userSettings = await prisma.userSettings.findUnique({
-        where:{
+        where: {
             userId: user.id,
-        }
-    })
-    !userSettings && redirect("/wizard")
+        },
+    });
+
+    if (!userSettings) {
+        redirect("/wizard")
+    }
 
     return <div className=" h-full bg-background">
                 <div className=" border-b bg-card">
@@ -48,5 +53,6 @@ export default async function page(){
                     
                 </div>
                 <Overview userSettings={userSettings} />
+                <History userSettings={userSettings} />
     </div>
 }
