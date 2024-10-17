@@ -6,7 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Period, Timeframe } from "@/lib/types";
 import { useQuery } from "@tanstack/react-query";
-
+ 
 interface Props {
     period: Period;
     setPeriod: (period: Period) => void;
@@ -35,7 +35,7 @@ export default function HistoryPeriodSelector({ period, setPeriod, timeframe, se
                 </Tabs>
             </Skeletonwrap>
             <div className="flex flex-wrap items-center gap-2">
-                <Skeletonwrap isLoading={historyPeriods.isFetching}  >
+                <Skeletonwrap isLoading={historyPeriods.isFetching} fullwidth={false}  >
                    <YearSelector period={period} setPeriod={setPeriod} years={historyPeriods.data || []} />
                 </Skeletonwrap>
                 {timeframe === "month" && (

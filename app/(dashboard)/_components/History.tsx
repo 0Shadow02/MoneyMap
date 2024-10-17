@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { GetFormatterForCurrency } from "@/lib/helpers";
 import { Period, Timeframe } from "@/lib/types";
 import { UserSettings } from "@prisma/client";
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import HistoryPeriodSelector from "./HistoryPeriodSelector";
 import { useQuery } from "@tanstack/react-query";
 import Skeletonwrap from "@/components/Skeleton";
@@ -18,6 +18,8 @@ import {
     XAxis,
     YAxis
 } from "recharts";
+import { cn } from "@/lib/utils";
+import CountUp from "react-countup";
 
 export default function History({userSettings}:{userSettings:UserSettings}) {
     const [timeframe, setTimeframe] = useState<Timeframe>("month")
@@ -109,9 +111,40 @@ export default function History({userSettings}:{userSettings:UserSettings}) {
                                       dataKey={(data)=>{
                                         const {year , month, day} = data;
                                         const date = new Date(year, month, day || 1);
+                                        if (timeframe === "year") {
+                                            return date.toLocaleDateString("default", { month: "long" })
+                                            
+                                        }
+                                        return date.toLocaleDateString("default", { day: "2-digit" })
                                         
                                       }} 
                                     />
+                                    <YAxis 
+                                      stroke="#888888"
+                                      fontSize={12}
+                                      tickLine={false}
+                                      axisLine={false}
+                                      />
+                                      <Bar 
+                                        dataKey={"income"} 
+                                        label="Income"
+                                        fill="url(#incomeBar)"
+                                        radius={4}
+                                        className="cursor-pointer"
+                                        />
+                                      <Bar 
+                                        dataKey="expense" 
+                                        label="Expense"
+                                        fill="url(#expenseBar)"
+                                        radius={4}
+                                        className="cursor-pointer"
+                                        />
+                    
+                                        <Tooltip 
+                                       cursor={{ opacity: 0.1}} content={props => (
+                                        <CustomTooltip {...props} formatter={formatter} />
+                                       )}
+                                        />
                                 </BarChart>
                                 </ResponsiveContainer>}
                             {!dataAvailable && (
@@ -126,4 +159,74 @@ export default function History({userSettings}:{userSettings:UserSettings}) {
                 </CardContent>
             </Card>
     </div>
+}
+
+
+function CustomTooltip({ active, payload, formatter }:any){
+    if (!active || !payload || payload.length === 0) {
+        return null
+    }
+    const data = payload[0].payload
+    const { income, expense } = data;
+    return <div className="min-w-[300px] rounded border bg-background p-4">
+
+        <TooltipRow 
+        formatter={ formatter} 
+        label="Expense" 
+        value={expense} 
+        bgColor="bg-red-500" 
+        textColor="text-red-500" 
+        />
+        <TooltipRow
+        formatter={ formatter}
+        label="Income"
+        value={income}
+        bgColor="bg-emerald-500"
+        textColor="text-emerald-500"
+        />
+        <TooltipRow
+        formatter={ formatter}
+        label="Balance"
+        value={income - expense}
+        bgColor="bg-gray-100"
+        textColor="text-forground"
+        />
+
+
+
+    
+    </div>
+
+}
+
+function TooltipRow({ label, value, bgColor, textColor, formatter }:{label:string, value:number, bgColor:string, textColor:string, formatter:Intl.NumberFormat }) {
+
+    const formattingFn = useCallback((value:number)=>{
+        return formatter.format(value)
+    },[formatter])
+    return (
+        <div className=" flex items-center gap-2">
+            <div className={cn("h-4 w-4 rounded-full", bgColor)}>
+            <div className="flex w-full justify-center">
+                <p className=" text-sm text-muted-foreground">{label}</p>
+                <div className={cn("text-sm font-bold" , textColor)}>
+                    <CountUp 
+                     duration={0.5}
+                     preserveValue
+                     end={value}
+                     decimals={0}
+                     formattingFn={(value)=>{
+                        return formatter.format(value)
+                     }
+                    }
+                    className=" text-sm "
+                    >
+
+                    </CountUp>
+                </div>
+
+            </div>
+            </div>
+        </div>
+    )
 }
