@@ -142,7 +142,7 @@ export default function History({userSettings}:{userSettings:UserSettings}) {
                     
                                         <Tooltip 
                                        cursor={{ opacity: 0.1}} content={props => (
-                                        <CustomTooltip {...props} formatter={formatter} />
+                                        <CustomTooltip formatter={formatter}  {...props} />
                                        )}
                                         />
                                 </BarChart>
@@ -189,7 +189,7 @@ function CustomTooltip({ active, payload, formatter }:any){
         label="Balance"
         value={income - expense}
         bgColor="bg-gray-100"
-        textColor="text-forground"
+        textColor="text-foreground"
         />
 
 
@@ -206,8 +206,8 @@ function TooltipRow({ label, value, bgColor, textColor, formatter }:{label:strin
     },[formatter])
     return (
         <div className=" flex items-center gap-2">
-            <div className={cn("h-4 w-4 rounded-full", bgColor)}>
-            <div className="flex w-full justify-center">
+            <div className={cn("h-4 w-4 rounded-full", bgColor)}></div>
+            <div className="flex w-full justify-between">
                 <p className=" text-sm text-muted-foreground">{label}</p>
                 <div className={cn("text-sm font-bold" , textColor)}>
                     <CountUp 
@@ -226,7 +226,7 @@ function TooltipRow({ label, value, bgColor, textColor, formatter }:{label:strin
                 </div>
 
             </div>
-            </div>
+            
         </div>
     )
 }
