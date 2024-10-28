@@ -27,7 +27,7 @@ export default function Page() {
 
             </div>
             {/* <div className="container flex flex-wrap items-center justify-between gap-6 py-8"> */}
-            <div className=" container flex flex-col gap-4 p-4">
+            <div className=" container mx-auto px-2 flex flex-col gap-4 p-4">
                 <Card>
                     <CardHeader>
                         <CardTitle>
