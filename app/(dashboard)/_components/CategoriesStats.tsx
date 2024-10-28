@@ -5,14 +5,16 @@ import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { DateToUTCDate, GetFormatterForCurrency } from "@/lib/helpers";
+
 import { TransactionType } from "@/lib/types";
 import { UserSettings } from "@prisma/client";
-import { useQuery } from "@tanstack/react-query";
 
+import { useQuery } from "@tanstack/react-query";
+ 
 import { useMemo } from "react";
 
 interface Props {
-    userSettings: UserSettings;
+    userSettings: UserSettings
     from: Date;
     to: Date;
 }
