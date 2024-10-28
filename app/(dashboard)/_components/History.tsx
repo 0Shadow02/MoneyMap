@@ -161,7 +161,7 @@ export default function History({userSettings}:{userSettings:UserSettings}) {
     </div>
 }
 
-
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 function CustomTooltip({ active, payload, formatter }:any){
     if (!active || !payload || payload.length === 0) {
         return null

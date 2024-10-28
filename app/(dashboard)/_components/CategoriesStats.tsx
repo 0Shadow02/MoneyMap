@@ -1,5 +1,4 @@
 "use client"
-import { getBalanceStatsResponseType } from "@/app/api/stats/balance/route";
 import { getCategoriesStatsResponseType } from "@/app/api/stats/categories/route";
 import Skeletonwrap from "@/components/Skeleton";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
@@ -7,9 +6,9 @@ import { Progress } from "@/components/ui/progress";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { DateToUTCDate, GetFormatterForCurrency } from "@/lib/helpers";
 import { TransactionType } from "@/lib/types";
-import { Transaction, UserSettings } from "@prisma/client";
+import { UserSettings } from "@prisma/client";
 import { useQuery } from "@tanstack/react-query";
-import { file } from "bun";
+
 import { useMemo } from "react";
 
 interface Props {

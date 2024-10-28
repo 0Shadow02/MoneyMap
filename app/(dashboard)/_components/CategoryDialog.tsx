@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils"
 import { CategorySchema } from "@/zod/schema/categories"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Dialog } from "@radix-ui/react-dialog"
-import { CircleOff, Divide, Loader2, PlusSquare } from "lucide-react"
+import { CircleOff, Loader2, PlusSquare } from "lucide-react"
 import { useCallback, useState } from "react"
 import { useForm } from "react-hook-form"
 import  Picker  from '@emoji-mart/react'
