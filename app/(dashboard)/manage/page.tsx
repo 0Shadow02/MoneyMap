@@ -64,7 +64,7 @@ function CategoryList({type}: {type: "income" | "expense"}) {
         <Skeletonwrap isLoading={categoriesQuery.isLoading}>
             <Card>
                 <CardHeader>
-                    <CardTitle className=" flex items-center justify-between gap-2">
+                    <CardTitle className=" flex flex-wrap items-center justify-between gap-2">
                         <div className=" flex items-center gap-2">
                             {type === "expense" ? <TrendingDown className=" h-12 w-12 items-center rounded-lg bg-red-400/10 text-red-500 " /> : <TrendingDown className=" h-12 w-12 items-center rounded-lg bg-green-400/10 text-green-500 " />}
                             <div>
