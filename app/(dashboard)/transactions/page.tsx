@@ -39,7 +39,7 @@ export default function TransactionsPage() {
                         /> 
             </div>
         </div>
-        <div className=" px-8">
+        <div className=" container mx-auto px-4">
             <TransactionTable from={dateRange.from} to={dateRange.to}    />
         </div>
         </>
