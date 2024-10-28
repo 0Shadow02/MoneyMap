@@ -33,7 +33,7 @@ export default function StatsCards({userSettings, from, to}:Props) {
 
     const balance = income - expense;
 
-    return <div className=" relative flex w-full flex-wra gap-2 md:flex-nowrap">
+    return <div className=" relative flex w-full flex-wrap gap-2 md:flex-nowrap">
         <Skeletonwrap isLoading={statsQuery.isFetching} >
             <StatCard formatter={formatter} 
                value={income}

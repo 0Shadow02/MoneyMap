@@ -44,7 +44,7 @@ export default function History({userSettings}:{userSettings:UserSettings}) {
 
     const dataAvailable = historyDataQuery.data && historyDataQuery.data.length > 0
 
-    return <div  className=" px-8">
+    return <div  className=" container mx-auto px-2">
             <h2 className="mt-12 text-3xl font-bold">
                 History
             </h2>

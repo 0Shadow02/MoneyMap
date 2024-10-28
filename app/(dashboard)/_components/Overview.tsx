@@ -15,7 +15,7 @@ export default function Overview({userSettings}:{userSettings:UserSettings}) {
         to: new Date()
     })
     return <>
-            <div className=" px-8 flex flex-wrap items-end justify-between gap-2 py-6">
+            <div className=" container mx-auto px-3 flex flex-wrap items-end justify-between gap-2 py-6">
                 <h2 className=" text-3xl font-bold">Overview</h2>
                 <div className="flex items-center gap-3">
                   <DateRangePicker
@@ -35,7 +35,7 @@ export default function Overview({userSettings}:{userSettings:UserSettings}) {
                   /> 
                 </div>
             </div>
-            <div className="px-8 flex w-full flex-col gap-2">
+            <div className="container mx-auto px-2 w-full flex flex-col gap-2 ">
             <StatsCards
             userSettings={userSettings}
             from={dateRange.from}
