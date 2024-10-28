@@ -20,14 +20,14 @@ export default function Page() {
         {/* <div className="flex flex-col w-full h-full"> */}
         <div className=" border-b bg-card">
             <div className="container flex flex-wrap items-center justify-between gap-6 py-8">
-                <div>
+                <div className="px-4">
                     <p className="text-3xl font-bold">Manage</p>
                     <p className=" text-muted-foreground">Manage your account settings and categories</p>
                 </div>
 
             </div>
             {/* <div className="container flex flex-wrap items-center justify-between gap-6 py-8"> */}
-            <div className=" container flex flex-col gap-4 p-4">
+            <div className=" px-8 flex flex-col gap-4 p-4">
                 <Card>
                     <CardHeader>
                         <CardTitle>
