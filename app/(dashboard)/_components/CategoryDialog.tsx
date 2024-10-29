@@ -118,10 +118,10 @@ export default function  CategoryDialog({type , onSuccessCallback , trigger}:Pro
                                 name="icon"
                              render={({field})=>(
                                 <FormItem>
-                                    <FormLabel>Icon</FormLabel>
+                                    <FormLabel className="mr-2">Icon</FormLabel>
                                         <FormControl>
                                             <Popover>
-                                                <PopoverTrigger>
+                                                <PopoverTrigger asChild>
                                                   <Button variant={"outline"}
                                                   className=" h-[100px] w-full">
                                                     {form.watch("icon") ? (
@@ -138,13 +138,15 @@ export default function  CategoryDialog({type , onSuccessCallback , trigger}:Pro
                                                     
                                                     </Button>  
                                                 </PopoverTrigger>
-                                                <PopoverContent className=" w-full">
-                                                    <Picker data={data}
-                                                    theme={theme.resolvedTheme}
-                                                    onEmojiSelect={(emoji :{native:string})=>{
-                                                        field.onChange(emoji.native)
-                                                    }} />
-                                                </PopoverContent>
+                                                <PopoverContent className="w-full max-h-[50vh] md:max-h-[80vh] overflow-y-auto">
+  <Picker
+    data={data}
+    theme={theme.resolvedTheme}
+    onEmojiSelect={(emoji: { native: string }) => {
+      field.onChange(emoji.native);
+    }}
+  />
+</PopoverContent>
                                             </Popover>
                                         </FormControl>
                                     <FormDescription>
