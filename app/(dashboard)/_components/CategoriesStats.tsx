@@ -31,7 +31,7 @@ export const CategoriesStats = ({userSettings, from,to}:Props) => {
         return GetFormatterForCurrency(userSettings.currency)
     }, [userSettings.currency])
 
-    return <div className=" flex w-full felwr] gap-2 md:flex-nowrap">
+    return <div className=" flex w-full flex-wrap gap-2 md:flex-nowrap">
        <Skeletonwrap isLoading={statsQuery.isFetching} >
          <CategoriesCard 
            formatter={formatter} 
@@ -71,7 +71,7 @@ function CategoriesCard({
             </CardHeader>
             <div className=" flex items-center justify-between gap-2">
                 {filteredData.length === 0 && (
-                    <div className=" flex h-60 w-full flex-col items-center justify-center">
+                    <div className=" flex h-60 w-full flex-col items-center justify-center text-center">
                         No data for the selected period
                     <p className="text-sm text-muted-foreground">
                         Try selecting a different period or try adding new{" "}
