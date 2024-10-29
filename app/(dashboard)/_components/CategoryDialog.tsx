@@ -138,15 +138,15 @@ export default function  CategoryDialog({type , onSuccessCallback , trigger}:Pro
                                                     
                                                     </Button>  
                                                 </PopoverTrigger>
-                                                <PopoverContent className="w-full max-h-[50vh] md:max-h-[80vh] overflow-y-auto">
-  <Picker
-    data={data}
-    theme={theme.resolvedTheme}
-    onEmojiSelect={(emoji: { native: string }) => {
-      field.onChange(emoji.native);
-    }}
-  />
-</PopoverContent>
+                                                <PopoverContent className="w-full max-h-[50vh]  overflow-y-auto">
+                                                    <Picker
+                                                        data={data}
+                                                        theme={theme.resolvedTheme}
+                                                        onEmojiSelect={(emoji: { native: string }) => {
+                                                        field.onChange(emoji.native);
+                                                        }}
+                                                    />
+                                                    </PopoverContent>
                                             </Popover>
                                         </FormControl>
                                     <FormDescription>
