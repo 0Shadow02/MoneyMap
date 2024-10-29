@@ -1,8 +1,8 @@
 # MoneyMap
 
-[🌐 Live Application](https://money-map-pi.vercel.app/) <!-- Link to your live application -->
+[🌐 Live Application](https://money-map-pi.vercel.app/) 
 
-![](https://ibb.co/RPvLGvG) <!-- Replace with your actual logo URL -->
+[![241029-15h34m56s-screenshot.png](https://i.postimg.cc/L8hTNJgs/241029-15h34m56s-screenshot.png)](https://postimg.cc/bZckvNTX)
 
 **MoneyMap** is an open-source financial tracking application built with [Next.js](https://nextjs.org). It helps users manage their finances efficiently through a user-friendly interface and powerful features.
 
