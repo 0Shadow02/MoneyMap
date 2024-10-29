@@ -10,6 +10,7 @@ import { useState } from "react"
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet"
 import { Menu } from "lucide-react"
 import { signOut } from "next-auth/react"
+import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover"
 
 export default function(){
     return <>
@@ -53,7 +54,18 @@ function MobileNavbar(){
             </div>
             <div className="flex items-center gap-2">
                <ThemeSwitcherBtn />
-               <Avatar/>
+               <Popover>
+                <PopoverTrigger asChild>
+                    <Button variant="ghost" size="icon" className="relative">
+                    <Avatar />
+                    </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-18 flex justify-center items-center top-full mt-2 mr-2 shadow-lg rounded">
+                    <Button onClick={() => signOut()} size="sm" type="button" variant="default">
+                    Signout
+                    </Button>
+                </PopoverContent>
+                </Popover>
             </div>
         </nav>
     </div>
